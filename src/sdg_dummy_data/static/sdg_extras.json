@@ -1,0 +1,121 @@
+[
+  {
+    "id": 1,
+    "shortTitle": "End Poverty",
+    "keywords": ["poverty", "equality", "sustainability"],
+    "explanation":
+      "Imagine a world where everyone has access to basic needs like food, shelter, and education. SDG 1 is the first step toward eliminating poverty globally and ensuring everyone gets a fair chance."
+  },
+  {
+    "id": 2,
+    "shortTitle": "End Hunger",
+    "keywords": ["hunger", "food security", "nutrition"],
+    "explanation":
+      "Ending hunger is more than feeding people—it’s about sustainable farming and fair distribution of food. SDG 2 is your gateway to a world without hunger."
+  },
+  {
+    "id": 3,
+    "shortTitle": "Health for All",
+    "keywords": ["health", "well-being", "medicine"],
+    "explanation":
+      "Health is wealth! SDG 3 focuses on ensuring healthy lives and promoting well-being for everyone, everywhere. From vaccines to mental health, this goal touches us all."
+  },
+  {
+    "id": 4,
+    "shortTitle": "Education for All",
+    "keywords": ["education", "learning", "equality"],
+    "explanation":
+      "Education is the key to unlocking the potential of individuals and communities. SDG 4 aims to provide inclusive, equitable, and quality education for everyone."
+  },
+  {
+    "id": 5,
+    "shortTitle": "Equality Now",
+    "keywords": ["gender equality", "women empowerment", "rights"],
+    "explanation":
+      "A fair and just world is one where everyone is equal. SDG 5 emphasizes empowering women and girls, ensuring they have equal opportunities in every sphere of life."
+  },
+  {
+    "id": 6,
+    "shortTitle": "Water for All",
+    "keywords": ["water", "sanitation", "hygiene"],
+    "explanation":
+      "Clean water and sanitation are essential for health and well-being. SDG 6 works towards universal access to safe water and sanitation facilities."
+  },
+  {
+    "id": 7,
+    "shortTitle": "Clean Energy",
+    "keywords": ["energy", "renewables", "sustainability"],
+    "explanation":
+      "Power the world sustainably! SDG 7 is about ensuring access to affordable, reliable, and modern energy for everyone, while protecting the planet."
+  },
+  {
+    "id": 8,
+    "shortTitle": "Work & Growth",
+    "keywords": ["jobs", "economic growth", "sustainability"],
+    "explanation":
+      "Decent work is the backbone of economic growth. SDG 8 ensures productive employment and fair conditions for all, while promoting sustainable development."
+  },
+  {
+    "id": 9,
+    "shortTitle": "Innovation Matters",
+    "keywords": ["innovation", "industry", "infrastructure"],
+    "explanation":
+      "Infrastructure and innovation drive progress. SDG 9 focuses on building resilient infrastructure and fostering innovation for sustainable industrial growth."
+  },
+  {
+    "id": 10,
+    "shortTitle": "Equal Opportunities",
+    "keywords": ["inequality", "inclusion", "justice"],
+    "explanation":
+      "Inequality holds us back. SDG 10 seeks to reduce disparities within and among countries, ensuring fair opportunities for everyone."
+  },
+  {
+    "id": 11,
+    "shortTitle": "Cities for All",
+    "keywords": ["cities", "sustainability", "communities"],
+    "explanation":
+      "Imagine a city where everyone thrives. SDG 11 focuses on making cities inclusive, safe, resilient, and sustainable for all inhabitants."
+  },
+  {
+    "id": 12,
+    "shortTitle": "Consume Wisely",
+    "keywords": ["sustainability", "production", "consumption"],
+    "explanation":
+      "Our choices shape the future. SDG 12 promotes sustainable consumption and production patterns to protect our planet’s resources."
+  },
+  {
+    "id": 13,
+    "shortTitle": "Act on Climate",
+    "keywords": ["climate", "action", "sustainability"],
+    "explanation":
+      "The time to act is now! SDG 13 calls for urgent action to combat climate change and its impacts, securing a sustainable future for all."
+  },
+  {
+    "id": 14,
+    "shortTitle": "Protect Oceans",
+    "keywords": ["oceans", "marine life", "biodiversity"],
+    "explanation":
+      "Oceans are vital for life on Earth. SDG 14 works to conserve and sustainably use marine resources for future generations."
+  },
+  {
+    "id": 15,
+    "shortTitle": "Protect Nature",
+    "keywords": ["forests", "biodiversity", "ecosystems"],
+    "explanation":
+      "Our ecosystems sustain us. SDG 15 promotes sustainable use of terrestrial ecosystems and halting biodiversity loss."
+  },
+  {
+    "id": 16,
+    "shortTitle": "Justice for All",
+    "keywords": ["peace", "justice", "institutions"],
+    "explanation":
+      "A peaceful society is a thriving society. SDG 16 aims to promote just, inclusive, and peaceful communities around the globe."
+  },
+  {
+    "id": 17,
+    "shortTitle": "Global Partnerships",
+    "keywords": ["partnerships", "collaboration", "global goals"],
+    "explanation":
+      "Achieving the SDGs requires teamwork. SDG 17 fosters partnerships to strengthen implementation of all the global goals."
+  }
+]

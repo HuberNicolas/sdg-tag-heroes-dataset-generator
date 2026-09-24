@@ -1,0 +1,26 @@
+[project]
+name = "sdg-dummy-data"
+version = "0.1.0"
+description = "Generates a synthetic dataset for SDG Tag Heroes: publications, SDG predictions, labels, explanations and topics"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "faker>=30",
+]
+
+[project.optional-dependencies]
+# Only needed for --mode llm (abstracts written by Claude)
+llm = [
+    "anthropic>=0.60",
+    "pydantic>=2",
+]
+
+[project.scripts]
+sdg-dummy-data = "sdg_dummy_data.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/sdg_dummy_data"]

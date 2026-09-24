@@ -1,0 +1,105 @@
+{
+  "sdg_1": {
+    "tier_0": {"name": "Altruistic Helper", "description": "Take the first step toward helping others by providing your support to reduce poverty. Every action counts!", "xp_required": 0},
+    "tier_1": {"name": "Community Builder", "description": "You’re helping to build stronger communities by addressing the root causes of poverty. Keep up the great work!", "xp_required": 300},
+    "tier_2": {"name": "Poverty Fighter", "description": "Your efforts to fight poverty are making a tangible difference. Continue to be a force for change!", "xp_required": 500},
+    "tier_3": {"name": "Champion of Prosperity", "description": "As a true champion of prosperity, your work is changing lives and lifting communities out of poverty. Inspire others with your leadership.", "xp_required": 700}
+  },
+  "sdg_2": {
+    "tier_0": {"name": "Seed Planter", "description": "Plant the seeds for a future free from hunger. Your actions today help create a sustainable tomorrow.", "xp_required": 0},
+    "tier_1": {"name": "Food Guardian", "description": "You’re ensuring that food is available for all, helping to nourish the world’s most vulnerable populations.", "xp_required": 300},
+    "tier_2": {"name": "Hunger Hero", "description": "Your commitment to ending hunger is making you a hero. Every meal provided is a victory in the fight against hunger!", "xp_required": 500},
+    "tier_3": {"name": "Global Nourisher", "description": "As a Global Nourisher, you're feeding not just individuals, but entire communities. Keep pushing forward, you're making a global impact!", "xp_required": 700}
+  },
+  "sdg_3": {
+    "tier_0": {"name": "Wellness Explorer", "description": "Embark on your journey to improve health and well-being for all. Your curiosity and compassion lead to lasting change.", "xp_required": 0},
+    "tier_1": {"name": "Health Advocate", "description": "You're actively advocating for better health policies and practices. Keep pushing for healthier lives for everyone!", "xp_required": 300},
+    "tier_2": {"name": "Life Saver", "description": "Your work is saving lives every day. You're a key player in creating a healthier world for generations to come!", "xp_required": 500},
+    "tier_3": {"name": "Global Health Leader", "description": "As a global health leader, your influence is helping shape the future of health worldwide. Continue to inspire and lead the way!", "xp_required": 700}
+  },
+  "sdg_4": {
+    "tier_0": {"name": "Knowledge Seeker", "description": "Your thirst for knowledge is opening doors to a brighter future. Keep learning, keep growing!", "xp_required": 0},
+    "tier_1": {"name": "Learning Champion", "description": "You're empowering others through education, helping to spread the power of learning far and wide.", "xp_required": 300},
+    "tier_2": {"name": "Education Pioneer", "description": "Your commitment to education is inspiring change across the globe. Keep pioneering new ways to provide quality education for all!", "xp_required": 500},
+    "tier_3": {"name": "Global Educator", "description": "As a Global Educator, your efforts are transforming lives and creating a world where everyone has access to learning. You are shaping the future.", "xp_required": 700}
+  },
+  "sdg_5": {
+    "tier_0": {"name": "Equality Advocate", "description": "Your voice is advocating for equal rights, laying the foundation for gender equality everywhere.", "xp_required": 0},
+    "tier_1": {"name": "Gender Champion", "description": "You’re actively promoting gender equality and breaking down barriers that have held back countless people for too long.", "xp_required": 300},
+    "tier_2": {"name": "Equality Leader", "description": "You're leading the charge in ensuring everyone, regardless of gender, has the same rights and opportunities. Lead with confidence!", "xp_required": 500},
+    "tier_3": {"name": "Global Equality Advocate", "description": "As a global leader in gender equality, you’re ensuring that the world truly values every individual, regardless of gender. You inspire equality worldwide.", "xp_required": 700}
+  },
+  "sdg_6": {
+    "tier_0": {"name": "Water Watcher", "description": "You're watching over our planet's most precious resource. Every action you take helps protect water for everyone.", "xp_required": 0},
+    "tier_1": {"name": "Sanitation Defender", "description": "You're making clean water and sanitation accessible to more people every day. Keep up the amazing work!", "xp_required": 300},
+    "tier_2": {"name": "Hydration Hero", "description": "You're helping communities access safe drinking water and better sanitation systems. Your work is literally saving lives.", "xp_required": 500},
+    "tier_3": {"name": "Water Guardian", "description": "As a Water Guardian, your efforts are ensuring that clean water and sanitation reach every corner of the globe. You are a vital protector of our world’s resources.", "xp_required": 700}
+  },
+  "sdg_7": {
+    "tier_0": {"name": "Energy Enthusiast", "description": "You're passionate about sustainable energy and laying the foundation for a clean energy future.", "xp_required": 0},
+    "tier_1": {"name": "Sustainability Supporter", "description": "You're championing sustainable energy solutions. Your work will lead to a cleaner, greener world for all!", "xp_required": 300},
+    "tier_2": {"name": "Clean Energy Champion", "description": "You're pushing the boundaries of renewable energy, making clean power accessible to all. You’re leading the way to a cleaner world!", "xp_required": 500},
+    "tier_3": {"name": "Global Energy Leader", "description": "As a Global Energy Leader, your efforts are transforming the world’s energy systems to ensure sustainability for generations. You’re a true pioneer in energy change.", "xp_required": 700}
+  },
+  "sdg_8": {
+    "tier_0": {"name": "Job Creator", "description": "You're laying the groundwork for job creation and economic growth. Your efforts help reduce inequality and build stronger economies.", "xp_required": 0},
+    "tier_1": {"name": "Growth Leader", "description": "You're driving economic growth and empowering others through job opportunities. Your leadership is creating better economies everywhere.", "xp_required": 300},
+    "tier_2": {"name": "Economic Innovator", "description": "As an economic innovator, you're developing new ideas to create sustainable jobs and foster growth in a rapidly changing world.", "xp_required": 500},
+    "tier_3": {"name": "Global Economic Leader", "description": "Your leadership is transforming economies globally, driving inclusive growth, and creating opportunities for all. You are building the economy of tomorrow.", "xp_required": 700}
+  },
+  "sdg_9": {
+    "tier_0": {"name": "Innovator", "description": "You’re innovating for a better world. Every breakthrough leads to progress and new opportunities.", "xp_required": 0},
+    "tier_1": {"name": "Builder", "description": "You're actively building the infrastructure that will support tomorrow's innovations. Your work is foundational.", "xp_required": 300},
+    "tier_2": {"name": "Infrastructure Master", "description": "You’re mastering the art of building sustainable infrastructure that supports economic development and innovation worldwide.", "xp_required": 500},
+    "tier_3": {"name": "Global Infrastructure Pioneer", "description": "As a Global Infrastructure Pioneer, your efforts are shaping the future of industries and nations through world-class innovation and development.", "xp_required": 700}
+  },
+  "sdg_10": {
+    "tier_0": {"name": "Equality Advocate", "description": "You’re advocating for equality across societies. Your efforts are creating a more inclusive world.", "xp_required": 0},
+    "tier_1": {"name": "Inclusion Champion", "description": "You're championing inclusive policies and practices, ensuring everyone has an equal opportunity.", "xp_required": 300},
+    "tier_2": {"name": "Inequality Reducer", "description": "You’re helping to reduce inequalities across all areas. Your actions empower marginalized communities.", "xp_required": 500},
+    "tier_3": {"name": "Global Equality Leader", "description": "As a global leader in equality, you’re shaping a world where everyone, regardless of background, has an equal chance.", "xp_required": 700}
+  },
+  "sdg_11": {
+    "tier_0": {"name": "Urban Explorer", "description": "You're exploring ways to make cities more sustainable and livable for everyone.", "xp_required": 0},
+    "tier_1": {"name": "City Planner", "description": "You're helping design urban environments that are safer, greener, and more inclusive for all citizens.", "xp_required": 300},
+    "tier_2": {"name": "Sustainable Developer", "description": "As a developer of sustainable cities, you’re building the foundations for future generations to thrive.", "xp_required": 500},
+    "tier_3": {"name": "Global Urban Innovator", "description": "Your innovative work in urban planning is transforming cities worldwide, creating spaces where people can live, work, and grow sustainably.", "xp_required": 700}
+  },
+  "sdg_12": {
+    "tier_0": {"name": "Conscious Consumer", "description": "You are a mindful consumer, making informed choices to reduce waste and minimize environmental impact.", "xp_required": 0},
+    "tier_1": {"name": "Green Producer", "description": "You’re shifting production to sustainable practices, ensuring that resources are used efficiently and responsibly.", "xp_required": 300},
+    "tier_2": {"name": "Sustainability Leader", "description": "You're leading the charge toward a more sustainable future, where production and consumption patterns protect the environment.", "xp_required": 500},
+    "tier_3": {"name": "Global Sustainability Advocate", "description": "As a global leader in sustainability, your actions influence the future of industries, guiding them towards a greener, more sustainable world.", "xp_required": 700}
+  },
+  "sdg_13": {
+    "tier_0": {"name": "Earth Guardian", "description": "You're committed to protecting our planet. Every action you take helps reduce the impact of climate change.", "xp_required": 0},
+    "tier_1": {"name": "Climate Advocate", "description": "You’re advocating for policies that protect the environment, raise awareness, and drive action to combat climate change.", "xp_required": 300},
+    "tier_2": {"name": "Climate Champion", "description": "Your efforts in climate action are having a measurable impact. You inspire others to join the fight against climate change.", "xp_required": 500},
+    "tier_3": {"name": "Global Climate Leader", "description": "As a global climate leader, your work is shaping the world’s response to climate change and ensuring a sustainable future for all.", "xp_required": 700}
+  },
+  "sdg_14": {
+    "tier_0": {"name": "Ocean Explorer", "description": "You're learning about and protecting the oceans. Your curiosity helps drive awareness and conservation efforts.", "xp_required": 0},
+    "tier_1": {"name": "Sea Protector", "description": "You're actively working to preserve marine ecosystems and protect aquatic species. Your work is essential for the health of our oceans.", "xp_required": 300},
+    "tier_2": {"name": "Marine Guardian", "description": "You’re taking meaningful steps to safeguard the oceans for future generations, ensuring they remain a source of life and livelihood.", "xp_required": 500},
+    "tier_3": {"name": "Deepsea Diver", "description": "As a Deepsea Diver, your work to protect marine life is shaping the future of ocean conservation globally. Keep diving deep into positive change!", "xp_required": 700}
+  },
+  "sdg_15": {
+    "tier_0": {"name": "Nature Protector", "description": "You are a guardian of nature, ensuring that ecosystems are preserved for future generations.", "xp_required": 0},
+    "tier_1": {"name": "Forest Guardian", "description": "You're protecting the world’s forests and wildlife, ensuring that biodiversity thrives on our planet.", "xp_required": 300},
+    "tier_2": {"name": "Wildlife Defender", "description": "You’re fighting to save endangered species and their habitats. Every action you take helps preserve life on Earth.", "xp_required": 500},
+    "tier_3": {"name": "Global Biodiversity Leader", "description": "As a leader in biodiversity conservation, you're ensuring that nature and wildlife thrive for generations to come. Your actions have a global impact.", "xp_required": 700}
+  },
+  "sdg_16": {
+    "tier_0": {"name": "Peacekeeper", "description": "You are committed to peace and security. Every small step you take contributes to building a more peaceful world.", "xp_required": 0},
+    "tier_1": {"name": "Justice Seeker", "description": "You’re advocating for justice and human rights, ensuring that everyone is treated with fairness and dignity.", "xp_required": 300},
+    "tier_2": {"name": "Governance Leader", "description": "You're actively shaping governance systems that promote peace, justice, and strong institutions across the globe.", "xp_required": 500},
+    "tier_3": {"name": "Global Peace Leader", "description": "As a global peace leader, your work is making the world a safer place for everyone, advancing justice and equality worldwide.", "xp_required": 700}
+  },
+  "sdg_17": {
+    "tier_0": {"name": "Collaborative Contributor", "description": "You are part of the global effort to build strong partnerships and achieve the Sustainable Development Goals. Every contribution counts!", "xp_required": 0},
+    "tier_1": {"name": "Global Partner", "description": "You're working with others to achieve the SDGs, building partnerships that bring us closer to a sustainable future.", "xp_required": 300},
+    "tier_2": {"name": "SDG Champion", "description": "As a champion for the SDGs, you're bringing together global partners and driving forward impactful, collaborative solutions.", "xp_required": 500},
+    "tier_3": {"name": "Global Sustainability Champion", "description": "As a Global Sustainability Champion, you are leading global efforts to create a sustainable future through partnerships and collective action.", "xp_required": 700}
+  }
+}
+
