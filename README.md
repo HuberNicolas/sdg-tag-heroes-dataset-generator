@@ -99,17 +99,14 @@ mostly on matching SDGs (e.g. the Faculty of Medicine on SDG 3).
 
 ## Load into SDG Tag Heroes
 
-In the SDG Tag Heroes repository, after copying `output/data/` into `data/`:
+In the SDG Tag Heroes repository, after copying `output/data/` into `data/` and starting the databases, run all
+steps (the regular pipeline and loader scripts) with one command:
 
 ```bash
-PYTHONPATH=. python utils/dummy/load_dummy_dataset.py --phase pipeline
+PYTHONPATH=. python utils/dummy/load_dummy_dataset.py
 ```
 
-```bash
-PYTHONPATH=. python utils/dummy/load_dummy_dataset.py --phase app
-```
-
-See "Dummy dataset" in the SDG Tag Heroes README for the environments and the Docker commands.
+See "Dummy dataset" in the SDG Tag Heroes README for the Python environment and the Docker commands.
 
 ## License
 
