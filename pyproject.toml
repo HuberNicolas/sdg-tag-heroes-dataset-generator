@@ -1,7 +1,7 @@
 [project]
 name = "sdg-dummy-data"
 version = "0.1.0"
-description = "Generates a synthetic dataset for SDG Tag Heroes: publications, SDG predictions, labels, explanations and topics"
+description = "Generates a synthetic publication repository for SDG Tag Heroes: OAI-PMH publications, ground-truth labels and explanations"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
@@ -15,6 +15,9 @@ llm = [
     "pydantic>=2",
 ]
 
+[dependency-groups]
+dev = ["ruff>=0.16"]
+
 [project.scripts]
 sdg-dummy-data = "sdg_dummy_data.cli:main"
 
@@ -24,3 +27,11 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/sdg_dummy_data"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 120
+
+[tool.ruff.lint]
+# pycodestyle errors, Pyflakes, import sorting
+select = ["E4", "E7", "E9", "F", "I"]

@@ -20,26 +20,22 @@ never name real people, institutions, datasets or journals.
 
 ## Install
 
-Python 3.10 or newer.
+Python 3.10 or newer and [uv](https://docs.astral.sh/uv/).
 
 ```bash
-python -m venv .venv
+uv sync
 ```
 
-```bash
-.venv/bin/pip install -e .
-```
-
-For abstracts written by Claude (`--mode llm`), install the optional dependencies:
+For abstracts written by Claude (`--mode llm`), install the optional dependencies as well:
 
 ```bash
-.venv/bin/pip install -e ".[llm]"
+uv sync --extra llm
 ```
 
 ## Generate
 
 ```bash
-.venv/bin/sdg-dummy-data --count 600 --out output
+uv run sdg-dummy-data --count 600 --out output
 ```
 
 | Option         | Default         | Meaning                                                                         |
@@ -57,7 +53,7 @@ For abstracts written by Claude (`--mode llm`), install the optional dependencie
 write realistic, clearly fictional abstracts (150–220 words) for the same topics:
 
 ```bash
-.venv/bin/sdg-dummy-data --count 600 --out output --mode llm
+uv run sdg-dummy-data --count 600 --out output --mode llm
 ```
 
 It needs Anthropic credentials (`ANTHROPIC_API_KEY`, or a profile from `ant auth login`) and costs money: roughly
@@ -107,6 +103,18 @@ PYTHONPATH=. python utils/dummy/load_dummy_dataset.py
 ```
 
 See "Dummy dataset" in the SDG Tag Heroes README for the Python environment and the Docker commands.
+
+## Development
+
+Lint and format with [Ruff](https://docs.astral.sh/ruff/) (configured in `pyproject.toml`):
+
+```bash
+uv run ruff check .
+```
+
+```bash
+uv run ruff format .
+```
 
 ## License
 

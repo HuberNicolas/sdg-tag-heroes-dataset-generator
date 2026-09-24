@@ -23,22 +23,38 @@ class Division:
 
 # faculty -> institutes -> divisions, plus the SDGs this faculty mostly publishes on
 _STRUCTURE = [
-    ("Faculty of Natural Sciences", (6, 7, 13, 14, 15), {
-        "Institute of Environmental Systems": ("Division of Hydrology", "Division of Ecology"),
-        "Institute of Earth and Climate": ("Division of Climate Dynamics", "Division of Marine Science"),
-    }),
-    ("Faculty of Medicine", (3, 2, 6), {
-        "Institute of Public Health": ("Division of Epidemiology", "Division of Global Health"),
-        "Institute of Clinical Research": ("Division of Infectious Diseases", "Division of Nutrition"),
-    }),
-    ("Faculty of Social Sciences", (4, 5, 10, 16), {
-        "Institute of Education": ("Division of Learning Sciences", "Division of Inclusive Education"),
-        "Institute of Political Science": ("Division of Governance", "Division of Gender Studies"),
-    }),
-    ("Faculty of Economics and Engineering", (1, 8, 9, 11, 12, 17), {
-        "Institute of Development Economics": ("Division of Labour Economics", "Division of Public Finance"),
-        "Institute of Sustainable Engineering": ("Division of Urban Systems", "Division of Circular Economy"),
-    }),
+    (
+        "Faculty of Natural Sciences",
+        (6, 7, 13, 14, 15),
+        {
+            "Institute of Environmental Systems": ("Division of Hydrology", "Division of Ecology"),
+            "Institute of Earth and Climate": ("Division of Climate Dynamics", "Division of Marine Science"),
+        },
+    ),
+    (
+        "Faculty of Medicine",
+        (3, 2, 6),
+        {
+            "Institute of Public Health": ("Division of Epidemiology", "Division of Global Health"),
+            "Institute of Clinical Research": ("Division of Infectious Diseases", "Division of Nutrition"),
+        },
+    ),
+    (
+        "Faculty of Social Sciences",
+        (4, 5, 10, 16),
+        {
+            "Institute of Education": ("Division of Learning Sciences", "Division of Inclusive Education"),
+            "Institute of Political Science": ("Division of Governance", "Division of Gender Studies"),
+        },
+    ),
+    (
+        "Faculty of Economics and Engineering",
+        (1, 8, 9, 11, 12, 17),
+        {
+            "Institute of Development Economics": ("Division of Labour Economics", "Division of Public Finance"),
+            "Institute of Sustainable Engineering": ("Division of Urban Systems", "Division of Circular Economy"),
+        },
+    ),
 ]
 
 

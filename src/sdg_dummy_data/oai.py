@@ -71,7 +71,7 @@ def _record(publication: dict) -> str:
 
 
 def write_list_records(folder: Path, publications: list[dict], page_size: int) -> int:
-    pages = [publications[i:i + page_size] for i in range(0, len(publications), page_size)]
+    pages = [publications[i : i + page_size] for i in range(0, len(publications), page_size)]
     for number, page in enumerate(pages, start=1):
         filename = "ListRecords.xml" if number == 1 else f"page-{number:04d}.xml"
         next_token = f"page-{number + 1:04d}" if number < len(pages) else ""
