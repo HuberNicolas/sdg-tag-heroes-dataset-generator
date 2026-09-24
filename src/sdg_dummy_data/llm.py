@@ -18,7 +18,8 @@ projects or real journals, and do not cite real studies. Places may be generic (
 Africa") but no named institutions.
 
 Each paper is mainly about its primary topic and also touches its secondary topic. Use vocabulary a researcher
-in the given field would use, so a classifier could recognise the related Sustainable Development Goals."""
+in the given field would use, so a classifier could recognise the related Sustainable Development Goals. Do not
+mention the Sustainable Development Goals, "SDG" or goal numbers in the title or abstract."""
 
 RESPONSE_SCHEMA = {
     "type": "object",

@@ -38,27 +38,59 @@ uv sync --extra llm
 uv run sdg-dummy-data --count 600 --out output
 ```
 
-| Option         | Default         | Meaning                                                                         |
-|----------------|-----------------|---------------------------------------------------------------------------------|
-| `--count`      | `600`           | Number of publications                                                          |
-| `--mode`       | `template`      | `template`: offline sentence templates. `llm`: titles and abstracts by Claude    |
-| `--model`      | `claude-opus-5` | Claude model for `--mode llm`                                                   |
-| `--batch-size` | `10`            | Papers per Claude request                                                       |
-| `--page-size`  | `100`           | Records per OAI-PMH page (ZORA uses 100)                                        |
-| `--seed`       | `31011997`      | Random seed; the same seed gives the same dataset                               |
+There are three ways to write the titles and abstracts:
 
-### Abstracts written by Claude
+| `--mode`   | Written by                               | Cost | Abstracts                      | Time for 600 papers         |
+|------------|------------------------------------------|------|--------------------------------|-----------------------------|
+| `template` | Sentence templates (default)             | free | Formulaic, share many phrases  | seconds                     |
+| `ollama`   | A local model through [Ollama](https://ollama.com) | free | Realistic, 60–110 words | hours on a laptop CPU (see below) |
+| `llm`      | Claude, through the Anthropic API        | paid | Realistic, 150–220 words       | not measured yet            |
 
-`--mode template` is free and fast, but the abstracts read like fill-in-the-blanks text. `--mode llm` asks Claude to
-write realistic, clearly fictional abstracts (150–220 words) for the same topics:
+The abstracts decide how varied the topics on the SDG Tag Heroes maps are: with template abstracts, BERTopic finds
+only a few topics. Everything else (organisation, labels, explanations) is the same in all modes.
+
+| Option          | Default                     | Meaning                                                                 |
+|-----------------|-----------------------------|-------------------------------------------------------------------------|
+| `--count`       | `600`                       | Number of publications                                                  |
+| `--mode`        | `template`                  | `template`, `ollama` or `llm` (see above)                               |
+| `--model`       | `llama3.2` / `claude-opus-5` | Model for `--mode ollama` / `--mode llm`                               |
+| `--ollama-host` | `$OLLAMA_HOST` or `http://localhost:11434` | Ollama server                                            |
+| `--batch-size`  | `10`                        | Papers per Claude request (Ollama writes one paper per request)        |
+| `--page-size`   | `100`                       | Records per OAI-PMH page (ZORA uses 100)                                |
+| `--seed`        | `31011997`                  | Random seed; the same seed gives the same dataset                       |
+
+Every written paper is cached in `output/cache/papers-<mode>.jsonl`. If a run stops, the next run only writes the
+missing papers.
+
+### Abstracts from a local model (free)
+
+1. Install [Ollama](https://ollama.com/download) and start it.
+2. Pull a model, for example:
+
+   ```bash
+   ollama pull llama3.2
+   ```
+
+3. Generate:
+
+   ```bash
+   uv run sdg-dummy-data --count 600 --out output --mode ollama
+   ```
+
+   With another model, add `--model <name>`, e.g. `--model qwen2.5:7b`.
+
+Local generation is slow on a CPU. With `deepseek-r1:8b` on an Intel MacBook, one paper took about 35 seconds, so 600
+papers take about 6 hours; smaller models such as `llama3.2` (3B) are faster. The run shows the remaining time, and
+it can be stopped and resumed at any time. For a quick try, use a smaller `--count`, e.g. 200.
+
+### Abstracts written by Claude (paid)
 
 ```bash
 uv run sdg-dummy-data --count 600 --out output --mode llm
 ```
 
-It needs Anthropic credentials (`ANTHROPIC_API_KEY`, or a profile from `ant auth login`) and costs money: roughly
-60 requests for 600 papers. Every finished paper is cached in `output/cache/papers-llm.jsonl`; if a run stops, the
-next run only writes the missing papers.
+This needs the optional dependencies (`uv sync --extra llm`) and Anthropic credentials (`ANTHROPIC_API_KEY`, or a
+profile from `ant auth login`). It costs money: roughly 60 requests for 600 papers.
 
 ## Output
 

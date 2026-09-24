@@ -1,7 +1,7 @@
 """Titles and abstracts for synthetic publications.
 
 `template` mode builds them offline from sentence templates and the SDG vocabulary (free, deterministic).
-`llm` mode asks Claude to write them (see llm.py).
+`ollama` mode lets a local model write them (see ollama.py), `llm` mode asks Claude (see llm.py).
 """
 
 import random

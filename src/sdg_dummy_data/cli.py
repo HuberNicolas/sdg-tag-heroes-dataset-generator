@@ -1,7 +1,8 @@
 """Generate a synthetic publication repository for SDG Tag Heroes.
 
     sdg-dummy-data --count 600 --out output                 # offline, template abstracts
-    sdg-dummy-data --count 600 --out output --mode llm      # abstracts written by Claude
+    sdg-dummy-data --count 600 --out output --mode ollama   # abstracts written by a local model (free)
+    sdg-dummy-data --count 600 --out output --mode llm      # abstracts written by Claude (paid)
 
 Output (copy output/data/ into the data/ folder of the SDG Tag Heroes repository):
     output/data/pipeline/oai/   OAI-PMH responses that replace ZORA (collector.py --from-dir data/pipeline/oai)
@@ -11,8 +12,10 @@ Output (copy output/data/ into the data/ folder of the SDG Tag Heroes repository
 
 import argparse
 import json
+import os
 import random
 import shutil
+import time
 from dataclasses import asdict
 from pathlib import Path
 
@@ -28,6 +31,7 @@ from .sdgs import SDGS
 
 STATIC = Path(__file__).parent / "static"
 OAI_PREFIX = "oai:dummy.sdg-tag-heroes:"
+DEFAULT_MODELS = {"ollama": "llama3.2", "llm": "claude-opus-5"}
 EXPLANATIONS_PER_FILE = 10_000  # same split size as utils/mongodb/sdg-explanation-splitter.sh
 
 
@@ -51,7 +55,7 @@ def _authors(faker: Faker, count: int) -> list[str]:
 
 
 def write_papers(args, plans, specs, rng) -> dict[int, PaperText]:
-    """Write titles and abstracts. Results are cached per mode, so a rerun of --mode llm only pays for missing papers."""
+    """Write titles and abstracts. Results are cached per mode, so a rerun only writes the missing papers."""
     cache_path = Path(args.out) / "cache" / f"papers-{args.mode}.jsonl"
     cached = {row["publication_id"]: PaperText(row["title"], row["abstract"]) for row in _read_jsonl(cache_path)}
     plans_by_id = {plan.publication_id: plan for plan in plans}
@@ -63,17 +67,27 @@ def write_papers(args, plans, specs, rng) -> dict[int, PaperText]:
         _write_jsonl(cache_path, ({"publication_id": pid, **asdict(p)} for pid, p in sorted(cached.items())))
         return cached
 
-    from .llm import ClaudeWriter
+    if args.mode == "ollama":
+        from .ollama import OllamaWriter
 
-    writer = ClaudeWriter(args.model)
+        writer, batch_size = OllamaWriter(args.model, args.ollama_host, args.seed), 1
+    else:
+        from .llm import ClaudeWriter
+
+        writer, batch_size = ClaudeWriter(args.model), args.batch_size
+
     cache_path.parent.mkdir(parents=True, exist_ok=True)
-    for start in range(0, len(todo), args.batch_size):
-        batch = todo[start : start + args.batch_size]
+    started = time.time()
+    for start in range(0, len(todo), batch_size):
+        batch = todo[start : start + batch_size]
+        written = writer.write_batch(batch)
+        done = start + len(batch)
+        remaining = (time.time() - started) / done * (len(todo) - done)
         print(
-            f"Claude: papers {batch[0].publication_id}-{batch[-1].publication_id} ({start + len(batch)}/{len(todo)})",
+            f"{args.model}: papers {batch[0].publication_id}-{batch[-1].publication_id} ({done}/{len(todo)}, "
+            f"about {remaining / 60:.0f} min left)",
             flush=True,
         )
-        written = writer.write_batch(batch)
         with cache_path.open("a", encoding="utf-8") as f:
             for spec in batch:
                 paper = written[spec.publication_id]
@@ -156,7 +170,7 @@ def generate(args) -> None:
         "seed": args.seed,
         "count": args.count,
         "mode": args.mode,
-        "model": args.model if args.mode == "llm" else None,
+        "model": args.model if args.mode != "template" else None,
         "oai_pages": pages,
         "authors": len(author_pool),
         # What the generator intended; the pipeline's predictor decides the actual predictions
@@ -173,14 +187,25 @@ def main() -> None:
     parser.add_argument("--seed", type=int, default=31011997, help="random seed (default: 31011997)")
     parser.add_argument(
         "--mode",
-        choices=["template", "llm"],
+        choices=["template", "ollama", "llm"],
         default="template",
-        help="template: offline sentence templates; llm: abstracts written by Claude",
+        help="template: offline sentence templates; ollama: a local model (free); llm: Claude (paid)",
     )
-    parser.add_argument("--model", default="claude-opus-5", help="Claude model for --mode llm (default: claude-opus-5)")
+    parser.add_argument(
+        "--model",
+        help=f"model for --mode ollama (default: {DEFAULT_MODELS['ollama']}) or llm ({DEFAULT_MODELS['llm']})",
+    )
+    parser.add_argument(
+        "--ollama-host",
+        default=os.environ.get("OLLAMA_HOST", "http://localhost:11434"),
+        help="Ollama server (default: $OLLAMA_HOST or http://localhost:11434)",
+    )
     parser.add_argument("--batch-size", type=int, default=10, help="papers per Claude request (default: 10)")
     parser.add_argument("--page-size", type=int, default=100, help="records per OAI page (default: 100, like ZORA)")
     args = parser.parse_args()
+    args.model = args.model or DEFAULT_MODELS.get(args.mode)
+    if not args.ollama_host.startswith("http"):
+        args.ollama_host = "http://" + args.ollama_host  # OLLAMA_HOST is often given without a scheme
     generate(args)
 
 
