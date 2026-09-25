@@ -3,6 +3,9 @@ name = "sdg-dummy-data"
 version = "0.1.0"
 description = "Generates a synthetic publication repository for SDG Tag Heroes: OAI-PMH publications, ground-truth labels and explanations"
 readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Nicolas Huber", email = "nicolas.huber.dev@gmail.com" }]
 requires-python = ">=3.10"
 dependencies = [
     "faker>=30",

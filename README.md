@@ -11,6 +11,7 @@ can be built and played without the original data**
 ![Faker](https://img.shields.io/badge/Faker-5A5A5A)
 ![Ollama](https://img.shields.io/badge/Ollama-000000?logo=ollama&logoColor=white)
 ![Claude](https://img.shields.io/badge/Claude-D97757?logo=claude&logoColor=white)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
 
 [Quick start](#quick-start) · [Modes](#three-ways-to-write-the-abstracts) · [Output](#output) ·
 [Load into SDG Tag Heroes](#load-into-sdg-tag-heroes)
@@ -59,6 +60,7 @@ flowchart LR
 - [Load into SDG Tag Heroes](#load-into-sdg-tag-heroes)
 - [Development](#development)
 - [About the data](#about-the-data)
+- [License](#license)
 
 ## Quick start
 
@@ -214,6 +216,10 @@ uv run ruff format .
 ## About the data
 
 The generated data is fictional. The SDG icons in the output are simple placeholders, not the official UN icons.
+
+## License
+
+Released under the [MIT License](LICENSE). The data you generate is yours to use.
 
 ## Author
 
