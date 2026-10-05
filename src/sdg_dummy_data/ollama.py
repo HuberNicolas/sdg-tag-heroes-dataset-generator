@@ -10,12 +10,17 @@ import urllib.error
 import urllib.request
 
 from .llm import SYSTEM_PROMPT
-from .papers import PaperSpec, PaperText
+from .papers import CONTEXTS, METHODS, PaperSpec, PaperText
 
 # Short abstracts are enough for the classifier and the topics, and keep local generation fast
 OLLAMA_SYSTEM_PROMPT = SYSTEM_PROMPT.replace(
     "an English abstract of 150 to 220 words", "an English abstract of 60 to 110 words"
+).replace(
+    # Small models copy this example into every abstract; each request names its own setting instead
+    'Places may be generic ("a coastal region in West\nAfrica") but no named institutions.',
+    "Places must stay generic (no named institutions); use the setting given in the request.",
 )
+assert "West" not in OLLAMA_SYSTEM_PROMPT
 
 RESPONSE_SCHEMA = {
     "type": "object",
@@ -25,10 +30,15 @@ RESPONSE_SCHEMA = {
 
 
 def _describe(spec: PaperSpec) -> str:
+    # Small models copy the example place of the prompt into every paper; a setting and a method per paper keep the
+    # abstracts (and so the topics) varied. Chosen by publication id, so a rerun gives the same request.
+    setting = CONTEXTS[spec.publication_id % len(CONTEXTS)]
+    method = METHODS[(spec.publication_id // len(CONTEXTS)) % len(METHODS)]
     return (
         f"Write one paper in the field {spec.field}, published {spec.year}. "
         f"Primary topic: {spec.primary_topic} (SDG: {spec.primary_sdg_name}). "
         f"Secondary topic: {spec.secondary_topic} (SDG: {spec.secondary_sdg_name}). "
+        f"Setting: {setting}. Method: {method}. "
         "Answer with JSON containing title and abstract."
     )
 

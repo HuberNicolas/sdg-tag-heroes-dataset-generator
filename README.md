@@ -90,7 +90,7 @@ This writes 600 publications with template abstracts to `output/` in a few secon
 | `--mode`   | Written by                                         | Cost | Abstracts                     | Time for 600 papers   |
 |------------|----------------------------------------------------|------|-------------------------------|-----------------------|
 | `template` | Sentence templates (default)                       | free | Formulaic, share many phrases | seconds               |
-| `ollama`   | A local model through [Ollama](https://ollama.com) | free | Realistic, 60–110 words       | hours on a laptop CPU |
+| `ollama`   | A local model through [Ollama](https://ollama.com) | free | Realistic, 60–110 words       | ~35 min on a laptop CPU |
 | `llm`      | Claude, through the Anthropic API                  | paid | Realistic, 150–220 words      | not measured yet      |
 
 The abstracts decide how varied the topics on the game's maps are: with template abstracts, BERTopic finds only a few
@@ -116,9 +116,12 @@ missing papers.
 
    For another model, add `--model <name>`, e.g. `--model qwen2.5:7b`.
 
-Local generation is slow on a CPU. With `deepseek-r1:8b` on an Intel MacBook, one paper took about 35 seconds, so 600
-papers take about 6 hours; smaller models such as `llama3.2` (3B) are faster. The run shows the remaining time and can
-be stopped and resumed at any time. For a quick try, use a smaller `--count`, e.g. 200.
+The default `llama3.2` (3B) is a good fit: on an Intel MacBook (CPU only) it writes a paper in about 3.5 seconds, so
+600 papers take about 35 minutes. Larger models are much slower; `deepseek-r1:8b` took about 35 seconds per paper. The
+run shows the remaining time and can be stopped and resumed at any time.
+
+Each request names a setting and a method for the paper (e.g. "an alpine region", "a randomised field experiment"),
+so that small models do not write every abstract about the same place.
 
 ### Claude (paid)
 
