@@ -23,6 +23,10 @@ OLLAMA_SYSTEM_PROMPT = SYSTEM_PROMPT.replace(
 )
 assert "West" not in OLLAMA_SYSTEM_PROMPT
 
+MAX_ATTEMPTS = 3
+MAX_TOKENS = 600
+REQUEST_TIMEOUT = 180  # seconds
+
 RESPONSE_SCHEMA = {
     "type": "object",
     "properties": {"title": {"type": "string"}, "abstract": {"type": "string"}},
@@ -68,13 +72,29 @@ class OllamaWriter:
             )
 
     def write(self, spec: PaperSpec) -> PaperText:
+        # Small models sometimes loop in JSON mode and never stop, or return an empty abstract. Each answer is capped,
+        # and a failed one is written again with another seed.
+        problem = ""
+        for attempt in range(MAX_ATTEMPTS):
+            try:
+                paper = self._request(spec, seed=self.seed + spec.publication_id + attempt * 100_000)
+            except (json.JSONDecodeError, KeyError, TimeoutError, urllib.error.URLError) as error:
+                problem = f"{type(error).__name__}: {error}"
+                continue
+            if len(paper.abstract.split()) >= 40 and paper.title:
+                return paper
+            problem = f"abstract too short ({len(paper.abstract.split())} words)"
+        raise RuntimeError(f"Ollama failed {MAX_ATTEMPTS} times for paper {spec.publication_id}: {problem}")
+
+    def _request(self, spec: PaperSpec, seed: int) -> PaperText:
         body = {
             "model": self.model,
             "stream": False,
             "think": False,  # reasoning models (e.g. deepseek-r1) would otherwise think before every abstract
             "format": RESPONSE_SCHEMA,
-            # The seed per paper makes a rerun write the same text (given the same model and Ollama version)
-            "options": {"temperature": 0.8, "seed": self.seed + spec.publication_id},
+            # The seed per paper makes a rerun write the same text (given the same model and Ollama version);
+            # num_predict caps the answer, a 110-word abstract needs about 250 tokens
+            "options": {"temperature": 0.8, "seed": seed, "num_predict": MAX_TOKENS},
             "messages": [
                 {"role": "system", "content": OLLAMA_SYSTEM_PROMPT},
                 {"role": "user", "content": _describe(spec)},
@@ -83,7 +103,7 @@ class OllamaWriter:
         request = urllib.request.Request(
             self.url, data=json.dumps(body).encode(), headers={"Content-Type": "application/json"}
         )
-        with urllib.request.urlopen(request, timeout=600) as response:
+        with urllib.request.urlopen(request, timeout=REQUEST_TIMEOUT) as response:
             answer = json.load(response)
         if "error" in answer:
             raise RuntimeError(f"Ollama: {answer['error']}")

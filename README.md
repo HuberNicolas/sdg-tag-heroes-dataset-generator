@@ -93,8 +93,9 @@ This writes 600 publications with template abstracts to `output/` in a few secon
 | `ollama`   | A local model through [Ollama](https://ollama.com) | free | Realistic, 60–110 words       | ~35 min on a laptop CPU |
 | `llm`      | Claude, through the Anthropic API                  | paid | Realistic, 150–220 words      | not measured yet      |
 
-The abstracts decide how varied the topics on the game's maps are: with template abstracts, BERTopic finds only a few
-topics. Everything else (organisation, labels, explanations) is the same in all modes.
+The abstracts decide how meaningful the topics on the game's overview map are: SDG Tag Heroes always forms 20 topics,
+but template abstracts share many phrases, so their topics are hard to tell apart. With `--mode ollama` (llama3.2, 600
+papers) the topics read like solar microgrids, water scarcity or antimicrobial resistance. Everything else (organisation, labels, explanations) is the same in all modes.
 
 Every written paper is cached in `output/cache/papers-<mode>.jsonl`. If a run stops, the next run only writes the
 missing papers.
