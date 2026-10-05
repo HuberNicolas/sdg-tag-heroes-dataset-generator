@@ -6,6 +6,7 @@ schema for the answer. Only the standard library is used.
 """
 
 import json
+import re
 import urllib.error
 import urllib.request
 
@@ -41,6 +42,11 @@ def _describe(spec: PaperSpec) -> str:
         f"Setting: {setting}. Method: {method}. "
         "Answer with JSON containing title and abstract."
     )
+
+
+def _clean(text: str) -> str:
+    """Small models now and then emit a lone UTF-16 surrogate (e.g. \\udfdd), which cannot be written as UTF-8."""
+    return re.sub(r"[\ud800-\udfff]", "", text).strip()
 
 
 class OllamaWriter:
@@ -82,7 +88,7 @@ class OllamaWriter:
         if "error" in answer:
             raise RuntimeError(f"Ollama: {answer['error']}")
         paper = json.loads(answer["message"]["content"])
-        return PaperText(paper["title"].strip(), paper["abstract"].strip())
+        return PaperText(_clean(paper["title"]), _clean(paper["abstract"]))
 
     def write_batch(self, specs: list[PaperSpec]) -> dict[int, PaperText]:
         return {spec.publication_id: self.write(spec) for spec in specs}
